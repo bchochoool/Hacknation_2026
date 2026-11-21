@@ -1,0 +1,400 @@
+/* Dokumenty i terminy – stylistyka zgodna z serwisem zus.pl (tokens.css, CONVENTIONS §7.1) */
+
+.documents-page {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+}
+
+.documents-page__container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+/* Header */
+.documents-page__header {
+  background-color: var(--color-surface-muted);
+  border-bottom: var(--border-width) solid var(--color-border);
+  padding: var(--space-5) 0;
+  border-top: var(--accent-bar-width) solid var(--color-primary);
+}
+
+.documents-page__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.documents-page__back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-link);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+}
+
+.documents-page__back-link:hover {
+  text-decoration: underline;
+  color: var(--color-primary-hover);
+}
+
+.documents-page__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--space-2);
+  color: var(--color-text);
+}
+
+.documents-page__subtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Main Layout */
+.documents-page__main {
+  padding: var(--space-6) 0 var(--space-8);
+}
+
+.documents-page__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .documents-page__grid {
+    grid-template-columns: 360px 1fr;
+  }
+}
+
+/* Sidebar: Situation config */
+.situation-card {
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-md);
+}
+
+.situation-card__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+  margin: 0 0 var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.form-group {
+  margin-bottom: var(--space-4);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: var(--space-3);
+  border: var(--border-width-control) solid var(--color-border-control);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  font-family: inherit;
+  background-color: var(--color-bg);
+  box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: 1px;
+}
+
+.form-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  margin-top: var(--space-2);
+}
+
+.form-checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--color-primary);
+  margin-top: 2px;
+}
+
+/* Payer Banner */
+.payer-banner {
+  background-color: var(--color-info-soft);
+  border-left: var(--accent-bar-width) solid var(--color-navy);
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-5);
+}
+
+.payer-banner__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.payer-banner__badge {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}
+
+.payer-banner__badge--employer {
+  background-color: var(--color-navy);
+  color: var(--color-on-primary);
+}
+
+.payer-banner__badge--zus {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.payer-banner__title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+  margin: 0;
+}
+
+.payer-banner__desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  margin: 0;
+  line-height: var(--line-height-base);
+}
+
+/* Progress bar */
+.progress-card {
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-5);
+}
+
+.progress-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-2);
+}
+
+.progress-card__bar-bg {
+  height: 8px;
+  background-color: var(--color-border);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.progress-card__bar-fill {
+  height: 100%;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+/* Deadlines Timeline */
+.deadlines-section {
+  margin-bottom: var(--space-6);
+}
+
+.section-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+  margin: 0 0 var(--space-4);
+}
+
+.deadlines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.deadline-card {
+  border: var(--border-width) solid var(--color-border);
+  border-top: 4px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+}
+
+.deadline-card__date {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-1);
+}
+
+.deadline-card__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.deadline-card__basis {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* Documents Checklist */
+.documents-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.doc-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.doc-card--checked {
+  background-color: var(--color-accent-soft);
+  border-color: var(--color-primary);
+}
+
+.doc-card__checkbox-wrapper {
+  padding-top: 2px;
+}
+
+.doc-card__content {
+  flex: 1;
+}
+
+.doc-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.doc-card__name {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.doc-card--checked .doc-card__name {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--radius-sm);
+}
+
+.badge--employer {
+  background-color: var(--color-navy);
+  color: #fff;
+}
+
+.badge--zus {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.doc-card__deadline {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-1);
+}
+
+.doc-card__note {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: var(--line-height-base);
+}
+
+/* Actions */
+.documents-actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  font-family: inherit;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-decoration: none;
+  min-height: var(--tap-target-min);
+  box-sizing: border-box;
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border: none;
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn--secondary {
+  background-color: var(--color-surface);
+  color: var(--color-navy);
+  border: var(--border-width-control) solid var(--color-navy);
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-surface-muted);
+}
+
+@media print {
+  .situation-card,
+  .documents-actions,
+  .documents-page__back-link {
+    display: none !important;
+  }
+  .documents-page__grid {
+    grid-template-columns: 1fr !important;
+  }
+}
