@@ -75,7 +75,7 @@ Panel pozwala zmienić stawki, wymiary urlopów i progi z `shared/params.json` b
 
 1. Otwórz `/admin` (np. `https://splendorous-alfajores-228b93.netlify.app/admin`).
 2. Zmień wybraną wartość, na przykład płacę minimalną.
-3. Wpisz klucz dostępu w polu **ADMIN_TOKEN**: `demo-hacknation-2026-jkb3m-admin-token`.
+3. Wpisz klucz dostępu w polu **ADMIN_TOKEN**: `6wU9uyIOJuYyrhZryBFTjv7FlSLsk914OfhSlf9cLuk=`.
 4. Zapisz. Kalkulator i plan używają od razu nowych wartości.
 
 Zapisane parametry obowiązują do restartu API. Na darmowym planie Render serwer usypia po bezczynności, więc po restarcie wracają wartości domyślne z `shared/params.json`.
