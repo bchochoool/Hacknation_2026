@@ -69,6 +69,19 @@ Kreator przekazuje dane scenariusza do `POST /api/v1/plan`. Edycje planu i potwi
 - `/login` symuluje mObywatela. `GET /api/v1/mock/profiles` zwraca listę profili, `POST /api/v1/mock/login` przyjmuje `{"profile_id":"anna"}`, a `GET /api/v1/mock/zus-data` używa tokenu z odpowiedzi logowania w nagłówku `Authorization: Bearer …`.
 - `/guide` zawiera przewodnik po tematach, a `/admin` pozwala edytować parametry wersji demonstracyjnej. Podgląd i pobieranie wniosków są dostępne w planie. Informacje o adresacie prowadzą do właściwej ścieżki złożenia dokumentów.
 
+### Panel administratora (`/admin`) w wersji demonstracyjnej
+
+Panel pozwala zmienić stawki, wymiary urlopów i progi z `shared/params.json` bez zmian w kodzie.
+
+1. Otwórz `/admin` (np. `https://splendorous-alfajores-228b93.netlify.app/admin`).
+2. Zmień wybraną wartość, na przykład płacę minimalną.
+3. Wpisz klucz dostępu w polu **ADMIN_TOKEN**: `demo-hacknation-2026-jkb3m-admin-token`.
+4. Zapisz. Kalkulator i plan używają od razu nowych wartości.
+
+Zapisane parametry obowiązują do restartu API. Na darmowym planie Render serwer usypia po bezczynności, więc po restarcie wracają wartości domyślne z `shared/params.json`.
+
+**Uwaga o bezpieczeństwie.** Wiemy, że jawny token w dokumentacji to zła praktyka. Robimy tak tylko dlatego, że to wersja testowa z fikcyjnymi danymi, a jurorzy muszą móc sprawdzić panel bez dostępu do konfiguracji hostingu. We wdrożeniu produkcyjnym token ma być losowy, trzymany w zmiennych środowiskowych lub menedżerze sekretów, najlepiej zastąpiony logowaniem z rolami, a parametry zapisywane trwale z historią zmian.
+
 ## 6. Sprawdzenia
 
 ```sh
