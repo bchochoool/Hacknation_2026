@@ -59,6 +59,7 @@ export function LoginPage() {
   const role = selectedRole ?? availableApplicants[0]?.role;
 
   const [profiles, setProfiles] = useState<MockProfileSummary[] | null>(null);
+  const [waking, setWaking] = useState(false);
   const [selectedProfile, setSelectedProfile] = useState('');
   const profileId = selectedProfile || profiles?.[0]?.profileId || '';
   const [error, setError] = useState('');
@@ -79,20 +80,34 @@ export function LoginPage() {
   useEffect(() => {
     mounted.current = true;
     let active = true;
-    void apiGet<MockProfileSummary[]>('/mock/profiles')
-      .then((items) => {
-        if (!active) return;
-        setProfiles(items);
-        if (!items.length) setError('Brak dostępnych profili testowych.');
-      })
-      .catch(() => {
-        if (active) {
+    // Hosting demo bywa uśpiony – pierwsze zapytanie może się nie udać, więc ponawiamy kilka razy.
+    const MAX_ATTEMPTS = 8;
+    const RETRY_DELAY_MS = 5000;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const load = (attempt: number) => {
+      void apiGet<MockProfileSummary[]>('/mock/profiles')
+        .then((items) => {
+          if (!active) return;
+          setWaking(false);
+          setProfiles(items);
+          if (!items.length) setError('Brak dostępnych profili testowych.');
+        })
+        .catch(() => {
+          if (!active) return;
+          if (attempt < MAX_ATTEMPTS) {
+            setWaking(true);
+            timer = setTimeout(() => load(attempt + 1), RETRY_DELAY_MS);
+            return;
+          }
+          setWaking(false);
           setProfiles([]);
           setError('Nie udało się pobrać profili testowych.');
-        }
-      });
+        });
+    };
+    load(1);
     return () => {
       active = false;
+      if (timer) clearTimeout(timer);
       mounted.current = false;
     };
   }, []);
@@ -243,7 +258,11 @@ export function LoginPage() {
 
             {profiles === null && (
               <div className="login-page__loading">
-                <p role="status">Ładowanie profili demonstracyjnych…</p>
+                <p role="status">
+                  {waking
+                    ? 'Budzimy serwer demonstracyjny – to potrwa do minuty. Nie odświeżaj strony…'
+                    : 'Ładowanie profili demonstracyjnych…'}
+                </p>
                 <span className="ui-skeleton login-page__skeleton" />
                 <span className="ui-skeleton login-page__skeleton" />
               </div>
